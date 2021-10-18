@@ -61,14 +61,20 @@ prevButton.addEventListener('click', function (event) {
   // move the slide
   var currentSlide = trackSlides.querySelector('.current-slide');
   var prevSlide = currentSlide.previousElementSibling;
+  var currentDot = dotsNavigation.querySelector('.current-slide');
+  var prevDot = currentDot === null || currentDot === void 0 ? void 0 : currentDot.previousElementSibling;
   moveToSlide(trackSlides, currentSlide, prevSlide);
+  updateDots(currentDot, prevDot);
 }); // When I click left, move slides to the right
 
 nextButton.addEventListener('click', function (event) {
   // move the slide
   var currentSlide = trackSlides.querySelector('.current-slide');
   var nextSlide = currentSlide.nextElementSibling;
+  var currentDot = dotsNavigation.querySelector('.current-slide');
+  var nextDot = currentDot === null || currentDot === void 0 ? void 0 : currentDot.nextElementSibling;
   moveToSlide(trackSlides, currentSlide, nextSlide);
+  updateDots(currentDot, nextDot);
 }); // When I click the nav indicators, move to that slide
 
 dotsNavigation.addEventListener('click', function (event) {

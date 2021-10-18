@@ -42,7 +42,11 @@ prevButton.addEventListener('click', (event) => {
   // move the slide
   const currentSlide = trackSlides.querySelector('.current-slide') as HTMLLIElement;
   const prevSlide = currentSlide.previousElementSibling as any;
+  const currentDot = dotsNavigation.querySelector('.current-slide') as HTMLButtonElement;
+  const prevDot = currentDot?.previousElementSibling as HTMLButtonElement;
+
   moveToSlide(trackSlides, currentSlide, prevSlide);
+  updateDots(currentDot, prevDot);
 });
 
 // When I click left, move slides to the right
@@ -50,7 +54,11 @@ nextButton.addEventListener('click', (event) => {
   // move the slide
   const currentSlide = trackSlides.querySelector('.current-slide') as HTMLLIElement;
   const nextSlide = currentSlide.nextElementSibling as any;
+  const currentDot = dotsNavigation.querySelector('.current-slide') as HTMLButtonElement;
+  const nextDot = currentDot?.nextElementSibling as HTMLButtonElement;
+
   moveToSlide(trackSlides, currentSlide, nextSlide);
+  updateDots(currentDot, nextDot);
 });
 
 // When I click the nav indicators, move to that slide
