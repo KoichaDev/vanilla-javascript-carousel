@@ -60,6 +60,6 @@
   border-radius: 50%;
   cursor: pointer;
 }
-.carousel .carousel__nav .carousel__indicator.current-slide-active {
+.carousel .carousel__nav .carousel__indicator.current-slide {
   background: rgba(0, 0, 0, 0.75);
 }

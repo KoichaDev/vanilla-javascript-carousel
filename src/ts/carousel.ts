@@ -22,8 +22,13 @@ childrenSlides.forEach((slide, index) => {
 
 function moveToSlide(trackSlides: HTMLElement, currentSlide: HTMLElement, targetSlide: HTMLElement) {
   trackSlides.style.transform = `translateX(-${targetSlide.style.left})`;
-  currentSlide.removeAttribute('id');
-  targetSlide.setAttribute('id', 'current-slide');
+  currentSlide.classList.remove('current-slide');
+  targetSlide.classList.add('current-slide');
+}
+
+function updateDots(currentDot: HTMLElement, targetDot: HTMLElement) {
+  currentDot.classList.remove('current-slide');
+  targetDot.classList.add('current-slide');
 }
 
 function setSlidePosition(slideNode: HTMLElement, slideImgWidth: number, increment: number) {
@@ -35,7 +40,7 @@ function setSlidePosition(slideNode: HTMLElement, slideImgWidth: number, increme
 
 prevButton.addEventListener('click', (event) => {
   // move the slide
-  const currentSlide = trackSlides.querySelector('#current-slide') as HTMLLIElement;
+  const currentSlide = trackSlides.querySelector('.current-slide') as HTMLLIElement;
   const prevSlide = currentSlide.previousElementSibling as any;
   moveToSlide(trackSlides, currentSlide, prevSlide);
 });
@@ -43,7 +48,7 @@ prevButton.addEventListener('click', (event) => {
 // When I click left, move slides to the right
 nextButton.addEventListener('click', (event) => {
   // move the slide
-  const currentSlide = trackSlides.querySelector('#current-slide') as HTMLLIElement;
+  const currentSlide = trackSlides.querySelector('.current-slide') as HTMLLIElement;
   const nextSlide = currentSlide.nextElementSibling as any;
   moveToSlide(trackSlides, currentSlide, nextSlide);
 });
@@ -56,10 +61,11 @@ dotsNavigation.addEventListener('click', (event) => {
 
   if (!targetDot) return;
 
-  const currentSlide = trackSlides.querySelector('#slide-indicator-active') as HTMLLIElement;
-  const currentDot = dotsNavigation.querySelector('#slide-indicator-active');
+  const currentSlide = trackSlides.querySelector('.current-slide') as HTMLLIElement;
+  const currentDot = dotsNavigation.querySelector('.current-slide') as HTMLButtonElement;
   const targetIndex = dots.findIndex((dot) => dot === targetDot);
   const targetSlides = childrenSlides[targetIndex];
 
   moveToSlide(trackSlides, currentSlide, targetSlides);
+  updateDots(currentDot, targetDot);
 });

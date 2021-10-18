@@ -42,8 +42,13 @@ childrenSlides.forEach(function (slide, index) {
 
 function moveToSlide(trackSlides, currentSlide, targetSlide) {
   trackSlides.style.transform = "translateX(-".concat(targetSlide.style.left, ")");
-  currentSlide.removeAttribute('id');
-  targetSlide.setAttribute('id', 'current-slide');
+  currentSlide.classList.remove('current-slide');
+  targetSlide.classList.add('current-slide');
+}
+
+function updateDots(currentDot, targetDot) {
+  currentDot.classList.remove('current-slide');
+  targetDot.classList.add('current-slide');
 }
 
 function setSlidePosition(slideNode, slideImgWidth, increment) {
@@ -54,14 +59,14 @@ function setSlidePosition(slideNode, slideImgWidth, increment) {
 
 prevButton.addEventListener('click', function (event) {
   // move the slide
-  var currentSlide = trackSlides.querySelector('#current-slide');
+  var currentSlide = trackSlides.querySelector('.current-slide');
   var prevSlide = currentSlide.previousElementSibling;
   moveToSlide(trackSlides, currentSlide, prevSlide);
 }); // When I click left, move slides to the right
 
 nextButton.addEventListener('click', function (event) {
   // move the slide
-  var currentSlide = trackSlides.querySelector('#current-slide');
+  var currentSlide = trackSlides.querySelector('.current-slide');
   var nextSlide = currentSlide.nextElementSibling;
   moveToSlide(trackSlides, currentSlide, nextSlide);
 }); // When I click the nav indicators, move to that slide
@@ -70,13 +75,14 @@ dotsNavigation.addEventListener('click', function (event) {
   // What indicator was clicked on?
   var targetDot = event.target.closest('button');
   if (!targetDot) return;
-  var currentSlide = trackSlides.querySelector('#slide-indicator-active');
-  var currentDot = dotsNavigation.querySelector('#slide-indicator-active');
+  var currentSlide = trackSlides.querySelector('.current-slide');
+  var currentDot = dotsNavigation.querySelector('.current-slide');
   var targetIndex = dots.findIndex(function (dot) {
     return dot === targetDot;
   });
   var targetSlides = childrenSlides[targetIndex];
   moveToSlide(trackSlides, currentSlide, targetSlides);
+  updateDots(currentDot, targetDot);
 });
 
 /***/ }),
