@@ -63,6 +63,7 @@
       background: rgba(0, 0, 0, 0.3);
       border: 0;
       border-radius: 50%;
+      cursor: pointer;
 
       &.current-slide-active {
         background: rgba(0, 0, 0, 0.75);

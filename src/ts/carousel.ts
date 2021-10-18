@@ -49,3 +49,17 @@ nextButton.addEventListener('click', (event) => {
 });
 
 // When I click the nav indicators, move to that slide
+
+dotsNavigation.addEventListener('click', (event) => {
+  // What indicator was clicked on?
+  const targetDot = event.target.closest('button');
+
+  if (!targetDot) return;
+
+  const currentSlide = trackSlides.querySelector('#slide-indicator-active') as HTMLLIElement;
+  const currentDot = dotsNavigation.querySelector('#slide-indicator-active');
+  const targetIndex = dots.findIndex((dot) => dot === targetDot);
+  const targetSlides = childrenSlides[targetIndex];
+
+  moveToSlide(trackSlides, currentSlide, targetSlides);
+});

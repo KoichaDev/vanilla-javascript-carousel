@@ -66,6 +66,19 @@ nextButton.addEventListener('click', function (event) {
   moveToSlide(trackSlides, currentSlide, nextSlide);
 }); // When I click the nav indicators, move to that slide
 
+dotsNavigation.addEventListener('click', function (event) {
+  // What indicator was clicked on?
+  var targetDot = event.target.closest('button');
+  if (!targetDot) return;
+  var currentSlide = trackSlides.querySelector('#slide-indicator-active');
+  var currentDot = dotsNavigation.querySelector('#slide-indicator-active');
+  var targetIndex = dots.findIndex(function (dot) {
+    return dot === targetDot;
+  });
+  var targetSlides = childrenSlides[targetIndex];
+  moveToSlide(trackSlides, currentSlide, targetSlides);
+});
+
 /***/ }),
 
 /***/ "./src/scss/main.scss":
