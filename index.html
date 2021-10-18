@@ -17,7 +17,7 @@
   </head>
   <body>
     <div class="carousel">
-      <button class="carousel__button carousel__button--left" id="button-left">
+      <button class="carousel__button carousel__button--left" id="button-left" aria-label="left Button to see more image">
         <i class="fas fa-chevron-left fa-3x"></i>
       </button>
       <div class="carousel__track-container">
@@ -33,14 +33,15 @@
           </li>
         </ul>
       </div>
-      <button class="carousel__button carousel__button--right" id="button-right">
+
+      <button class="carousel__button carousel__button--right" id="button-right" aria-label="Right Button to see more image">
         <i class="fas fa-chevron-right fa-3x"></i>
       </button>
 
       <nav class="carousel__nav" id="carousel-nav">
-        <button class="carousel__indicator current-slide"></button>
-        <button class="carousel__indicator"></button>
-        <button class="carousel__indicator"></button>
+        <button class="carousel__indicator current-slide" aria-label="Current indicator"></button>
+        <button class="carousel__indicator" aria-label="Not current indicator"></button>
+        <button class="carousel__indicator" aria-label="Not current indicator"></button>
       </nav>
     </div>
   </body>
