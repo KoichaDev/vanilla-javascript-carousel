@@ -2,7 +2,7 @@
   "name": "vanilla-carousel",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "dev": "parcel watch src/index.js",
     "build": "parcel build src/index.js"
@@ -20,5 +20,8 @@
   "homepage": "https://github.com/KoichaDev/vanilla-javascript-carousel#readme",
   "dependencies": {
     "parcel": "^2.0.0"
+  },
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.0.0"
   }
 }
