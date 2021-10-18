@@ -31,10 +31,6 @@ var dotsNavigation = document.getElementById('carousel-nav'); // This is alterna
 var dots = Array.from(dotsNavigation.children);
 var childrenSlides = Array.from(trackSlides.children);
 var slideImgWidth = childrenSlides[0].getBoundingClientRect().width; // Arrange the slides next to another
-// for (let i = 0; childrenSlides.length; i++) {
-//   //   setSlidePosition(childrenSlides[i], slideImgWidth, i);
-//   //   childrenSlides[i].style.left = slideImgWidth * i + 'px';
-// }
 
 childrenSlides.forEach(function (slide, index) {
   slide.style.left = slideImgWidth * index + 'px';
@@ -62,7 +58,13 @@ prevButton.addEventListener('click', function (event) {
   var currentSlide = trackSlides.querySelector('.current-slide');
   var prevSlide = currentSlide.previousElementSibling;
   var currentDot = dotsNavigation.querySelector('.current-slide');
-  var prevDot = currentDot === null || currentDot === void 0 ? void 0 : currentDot.previousElementSibling;
+  var prevDot = currentDot === null || currentDot === void 0 ? void 0 : currentDot.previousElementSibling; // Make The carousel restart from the last image
+
+  if (currentSlide === childrenSlides[0]) {
+    moveToSlide(trackSlides, currentSlide, childrenSlides[childrenSlides.length - 1]);
+    updateDots(currentDot, dots[dots.length - 1]);
+  }
+
   moveToSlide(trackSlides, currentSlide, prevSlide);
   updateDots(currentDot, prevDot);
 }); // When I click left, move slides to the right
@@ -72,7 +74,13 @@ nextButton.addEventListener('click', function (event) {
   var currentSlide = trackSlides.querySelector('.current-slide');
   var nextSlide = currentSlide.nextElementSibling;
   var currentDot = dotsNavigation.querySelector('.current-slide');
-  var nextDot = currentDot === null || currentDot === void 0 ? void 0 : currentDot.nextElementSibling;
+  var nextDot = currentDot === null || currentDot === void 0 ? void 0 : currentDot.nextElementSibling; // Make The carousel restart from the beginning
+
+  if (currentSlide === childrenSlides[childrenSlides.length - 1]) {
+    moveToSlide(trackSlides, currentSlide, childrenSlides[0]);
+    updateDots(currentDot, dots[0]);
+  }
+
   moveToSlide(trackSlides, currentSlide, nextSlide);
   updateDots(currentDot, nextDot);
 }); // When I click the nav indicators, move to that slide

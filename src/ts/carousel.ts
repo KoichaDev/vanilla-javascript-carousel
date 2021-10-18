@@ -11,11 +11,6 @@ const slideImgWidth = childrenSlides[0].getBoundingClientRect().width;
 
 // Arrange the slides next to another
 
-// for (let i = 0; childrenSlides.length; i++) {
-//   //   setSlidePosition(childrenSlides[i], slideImgWidth, i);
-//   //   childrenSlides[i].style.left = slideImgWidth * i + 'px';
-// }
-
 childrenSlides.forEach((slide, index) => {
   slide.style.left = slideImgWidth * index + 'px';
 });
@@ -45,6 +40,12 @@ prevButton.addEventListener('click', (event) => {
   const currentDot = dotsNavigation.querySelector('.current-slide') as HTMLButtonElement;
   const prevDot = currentDot?.previousElementSibling as HTMLButtonElement;
 
+  // Make The carousel restart from the last image
+  if (currentSlide === childrenSlides[0]) {
+    moveToSlide(trackSlides, currentSlide, childrenSlides[childrenSlides.length - 1]);
+    updateDots(currentDot, dots[dots.length - 1]);
+  }
+
   moveToSlide(trackSlides, currentSlide, prevSlide);
   updateDots(currentDot, prevDot);
 });
@@ -56,6 +57,12 @@ nextButton.addEventListener('click', (event) => {
   const nextSlide = currentSlide.nextElementSibling as any;
   const currentDot = dotsNavigation.querySelector('.current-slide') as HTMLButtonElement;
   const nextDot = currentDot?.nextElementSibling as HTMLButtonElement;
+
+  // Make The carousel restart from the beginning
+  if (currentSlide === childrenSlides[childrenSlides.length - 1]) {
+    moveToSlide(trackSlides, currentSlide, childrenSlides[0]);
+    updateDots(currentDot, dots[0]);
+  }
 
   moveToSlide(trackSlides, currentSlide, nextSlide);
   updateDots(currentDot, nextDot);
