@@ -39,7 +39,8 @@
   width: 100%;
   max-width: 100%;
   height: 100%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 .carousel .carousel__nav {
   display: flex;
@@ -57,4 +58,3 @@
 .carousel .carousel__nav .carousel__indicator.current-slide-active {
   background: rgba(0, 0, 0, 0.75);
 }
-/*# sourceMappingURL=index.css.map */
