@@ -1,0 +1,24 @@
+{
+  "name": "vanilla-carousel",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "parcel watch src/index.js",
+    "build": "parcel build src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KoichaDev/vanilla-javascript-carousel.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KoichaDev/vanilla-javascript-carousel/issues"
+  },
+  "homepage": "https://github.com/KoichaDev/vanilla-javascript-carousel#readme",
+  "dependencies": {
+    "parcel": "^2.0.0"
+  }
+}
