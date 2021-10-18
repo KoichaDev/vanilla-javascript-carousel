@@ -25,11 +25,15 @@
     position: relative;
     background: lightgreen;
     height: 100%;
+    overflow: hidden;
 
     .carousel__track {
+      position: relative;
       margin: 0;
       padding: 0;
+      height: 100%;
       list-style: none;
+      transition: transform 250ms ease-in;
 
       .carousel__slide {
         position: absolute;

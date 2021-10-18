@@ -17,12 +17,12 @@
   </head>
   <body>
     <div class="carousel">
-      <button class="carousel__button carousel__button--left">
+      <button class="carousel__button carousel__button--left" id="button-left">
         <i class="fas fa-chevron-left fa-3x"></i>
       </button>
       <div class="carousel__track-container">
         <ul class="carousel__track">
-          <li class="carousel__slide">
+          <li class="carousel__slide" id="current-slide">
             <img class="carousel__image" src="src/img/image-1.jpeg" alt="" />
           </li>
           <li class="carousel__slide">
@@ -33,11 +33,11 @@
           </li>
         </ul>
       </div>
-      <button class="carousel__button carousel__button--right">
+      <button class="carousel__button carousel__button--right" id="button-right">
         <i class="fas fa-chevron-right fa-3x"></i>
       </button>
 
-      <nav class="carousel__nav">
+      <nav class="carousel__nav" id="carousel-nav">
         <button class="carousel__indicator current-slide-active"></button>
         <button class="carousel__indicator"></button>
         <button class="carousel__indicator"></button>

@@ -6,9 +6,57 @@
 /*!**********************!*\
   !*** ./src/index.ts ***!
   \**********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ts_carousel__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ts/carousel */ "./src/ts/carousel.ts");
+/* harmony import */ var _ts_carousel__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_ts_carousel__WEBPACK_IMPORTED_MODULE_0__);
+
+
+/***/ }),
+
+/***/ "./src/ts/carousel.ts":
+/*!****************************!*\
+  !*** ./src/ts/carousel.ts ***!
+  \****************************/
 /***/ (() => {
 
 
+
+var trackSlides = document.querySelector('.carousel__track');
+var nextButton = document.getElementById('button-right');
+var prevButton = document.getElementById('button-left');
+var dotsNavigation = document.getElementById('carousel-nav'); // This is alternative to do instead of document.querySelector('#carousel-nav button') for example
+
+var dots = Array.from(dotsNavigation.children);
+var childrenSlides = Array.from(trackSlides.children);
+var slideImgWidth = childrenSlides[0].getBoundingClientRect().width; // Arrange the slides next to another
+// for (let i = 0; childrenSlides.length; i++) {
+//   //   setSlidePosition(childrenSlides[i], slideImgWidth, i);
+//   //   childrenSlides[i].style.left = slideImgWidth * i + 'px';
+// }
+
+childrenSlides.forEach(function (slide, index) {
+  slide.style.left = slideImgWidth * index + 'px';
+});
+
+function setSlidePosition(slideNode, slideImgWidth, increment) {
+  slideNode.style.left = slideImgWidth * increment + 'px';
+} //   child.style.left = 0;
+// When I click left, move slides to the left
+// When I click left, move slides to the right
+
+
+nextButton.addEventListener('click', function (event) {
+  // move the slide
+  var currentSlide = trackSlides.querySelector('#current-slide');
+  var nextSlide = currentSlide.nextElementSibling; // Move to the next slide
+
+  var amountToMove = nextSlide.style.left;
+  trackSlides.style.transform = "translateX(-".concat(amountToMove, ")");
+  currentSlide.removeAttribute('id');
+  nextSlide.setAttribute('id', 'current-slide');
+}); // When I click the nav indicators, move to that slide
 
 /***/ }),
 
@@ -83,6 +131,30 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 				}
 /******/ 			}
 /******/ 			return result;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	(() => {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = (module) => {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				() => (module['default']) :
+/******/ 				() => (module);
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
 /******/ 		};
 /******/ 	})();
 /******/ 	

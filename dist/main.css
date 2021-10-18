@@ -22,11 +22,15 @@
   position: relative;
   background: lightgreen;
   height: 100%;
+  overflow: hidden;
 }
 .carousel .carousel__track-container .carousel__track {
+  position: relative;
   margin: 0;
   padding: 0;
+  height: 100%;
   list-style: none;
+  transition: transform 250ms ease-in;
 }
 .carousel .carousel__track-container .carousel__track .carousel__slide {
   position: absolute;
