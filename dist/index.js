@@ -40,22 +40,30 @@ childrenSlides.forEach(function (slide, index) {
   slide.style.left = slideImgWidth * index + 'px';
 });
 
+function moveToSlide(trackSlides, currentSlide, targetSlide) {
+  trackSlides.style.transform = "translateX(-".concat(targetSlide.style.left, ")");
+  currentSlide.removeAttribute('id');
+  targetSlide.setAttribute('id', 'current-slide');
+}
+
 function setSlidePosition(slideNode, slideImgWidth, increment) {
   slideNode.style.left = slideImgWidth * increment + 'px';
 } //   child.style.left = 0;
 // When I click left, move slides to the left
-// When I click left, move slides to the right
 
+
+prevButton.addEventListener('click', function (event) {
+  // move the slide
+  var currentSlide = trackSlides.querySelector('#current-slide');
+  var prevSlide = currentSlide.previousElementSibling;
+  moveToSlide(trackSlides, currentSlide, prevSlide);
+}); // When I click left, move slides to the right
 
 nextButton.addEventListener('click', function (event) {
   // move the slide
   var currentSlide = trackSlides.querySelector('#current-slide');
-  var nextSlide = currentSlide.nextElementSibling; // Move to the next slide
-
-  var amountToMove = nextSlide.style.left;
-  trackSlides.style.transform = "translateX(-".concat(amountToMove, ")");
-  currentSlide.removeAttribute('id');
-  nextSlide.setAttribute('id', 'current-slide');
+  var nextSlide = currentSlide.nextElementSibling;
+  moveToSlide(trackSlides, currentSlide, nextSlide);
 }); // When I click the nav indicators, move to that slide
 
 /***/ }),

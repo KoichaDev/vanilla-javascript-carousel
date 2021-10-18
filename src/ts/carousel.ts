@@ -20,23 +20,32 @@ childrenSlides.forEach((slide, index) => {
   slide.style.left = slideImgWidth * index + 'px';
 });
 
+function moveToSlide(trackSlides: HTMLElement, currentSlide: HTMLElement, targetSlide: HTMLElement) {
+  trackSlides.style.transform = `translateX(-${targetSlide.style.left})`;
+  currentSlide.removeAttribute('id');
+  targetSlide.setAttribute('id', 'current-slide');
+}
+
 function setSlidePosition(slideNode: HTMLElement, slideImgWidth: number, increment: number) {
   slideNode.style.left = slideImgWidth * increment + 'px';
 }
 //   child.style.left = 0;
 
 // When I click left, move slides to the left
-// When I click left, move slides to the right
 
+prevButton.addEventListener('click', (event) => {
+  // move the slide
+  const currentSlide = trackSlides.querySelector('#current-slide') as HTMLLIElement;
+  const prevSlide = currentSlide.previousElementSibling as any;
+  moveToSlide(trackSlides, currentSlide, prevSlide);
+});
+
+// When I click left, move slides to the right
 nextButton.addEventListener('click', (event) => {
   // move the slide
   const currentSlide = trackSlides.querySelector('#current-slide') as HTMLLIElement;
   const nextSlide = currentSlide.nextElementSibling as any;
-
-  // Move to the next slide
-  const amountToMove = nextSlide.style.left;
-  trackSlides.style.transform = `translateX(-${amountToMove})`;
-  currentSlide.removeAttribute('id');
-  nextSlide.setAttribute('id', 'current-slide');
+  moveToSlide(trackSlides, currentSlide, nextSlide);
 });
+
 // When I click the nav indicators, move to that slide
